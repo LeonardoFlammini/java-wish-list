@@ -20,30 +20,49 @@ public class Main {
         boolean stop = false;
         //
         //Eseguibile
-        while(!stop){
-            System.out.println("What present do you want?");
-            String present = scanner.nextLine();
-            presents.add(present);
-            System.out.println("Size of the list: " + presents.size());
-            System.out.println("Do you want to stop? y/n");
-            String choice = scanner.nextLine();
-            while (!choice.equals("y") && !choice.equals("n"))
-            {
-                System.out.println("Invalid choice. Please enter 'y' or 'n'.");
-                choice = scanner.nextLine();
-            }
-            switch (choice){
-                case "y":
-                    stop = true;
-                    break;
-                case "n":
-                    break;
-            }
+
+        System.out.println("Would you like to add presents to the list or read the list? a-to add/ r-to read");
+        String choice = scanner.nextLine();
+        while (!choice.equals("a") && !choice.equals("r"))
+        {
+            System.out.println("Invalid choice. Please enter 'a' or 'r'.");
+            choice = scanner.nextLine();
+        }
+        switch(choice)
+        {
+            case "a":
+                while(!stop)
+                {
+                    System.out.println("What present do you want?");
+                    String present = scanner.nextLine();
+                    presents.add(present);
+                    System.out.println("Size of the list: " + presents.size());
+                    System.out.println("Do you want to stop? y/n");
+                    choice = scanner.nextLine();
+                    while (!choice.equals("y") && !choice.equals("n"))
+                    {
+                        System.out.println("Invalid choice. Please enter 'y' or 'n'.");
+                        choice = scanner.nextLine();
+                    }
+                    switch (choice)
+                    {
+                        case "y":
+                            stop = true;
+                            break;
+                        case "n":
+                            break;
+                    }
+                }
+
+                for( String present : presents){
+                    writeToFile(present,filepath);
+                }
+                break;
+            case "r":
+                readFile(filepath);
+                break;
         }
 
-        for( String present : presents){
-            writeToFile(present,filepath);
-        }
 
 
 
