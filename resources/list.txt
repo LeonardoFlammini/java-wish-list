@@ -3,3 +3,4 @@ plane
 train
 mouse
 teddy bear
+figure

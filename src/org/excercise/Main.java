@@ -57,6 +57,7 @@ public class Main {
                 for( String present : presents){
                     writeToFile(present,filepath);
                 }
+                readFile(filepath);
                 break;
             case "r":
                 readFile(filepath);
